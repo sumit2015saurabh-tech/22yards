@@ -135,8 +135,8 @@ export function FullMarketPage() {
               key={t}
               type="button"
               onClick={() => setTab(t)}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
-                tab === t ? 'bg-pitch-500 text-white shadow-md' : 'bg-white/[0.05] text-white/50 hover:bg-white/[0.08]'
+              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all border ${
+                tab === t ? 'tab-active' : 'tab-inactive'
               }`}
             >
               {t === 'odds' ? 'Markets' : t === 'tv' ? 'TV' : 'Score'}

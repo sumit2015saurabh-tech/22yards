@@ -6,8 +6,17 @@ import { SPORTS, EXCHANGE_MODES, NEWS_TICKER } from '@/data/sports';
 import { isDemoMode } from '@/lib/api';
 
 const navLink = ({ isActive }: { isActive: boolean }) =>
-  `px-3 py-1.5 rounded text-xs font-semibold whitespace-nowrap transition-colors ${
-    isActive ? 'bg-white/20 text-white' : 'text-white/80 hover:bg-white/10'
+  `px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+    isActive
+      ? 'tab-active'
+      : 'text-white/75 hover:bg-white/[0.08] hover:text-white'
+  }`;
+
+const sportNavLink = ({ isActive }: { isActive: boolean }) =>
+  `px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+    isActive
+      ? 'bg-white/15 text-white border border-white/20 shadow-sm'
+      : 'text-white/85 hover:bg-white/10'
   }`;
 
 export function NewsMarquee() {
@@ -78,13 +87,13 @@ export function Header() {
 
       <div className="bg-gradient-to-r from-pitch-700 via-pitch-600 to-pitch-500 shadow-sm">
         <div className="max-w-[1600px] mx-auto px-3 py-1.5 flex gap-2 overflow-x-auto scrollbar-hide">
-          <NavLink to="/inplay" className={navLink}>In-Play</NavLink>
-          <NavLink to="/multimarket" className={navLink}>Multi Markets</NavLink>
+          <NavLink to="/inplay" className={sportNavLink}>In-Play</NavLink>
+          <NavLink to="/multimarket" className={sportNavLink}>Multi Markets</NavLink>
           {SPORTS.map((s) => (
-            <NavLink key={s.id} to={`/sport/${s.slug}`} className={navLink}>{s.icon} {s.name}</NavLink>
+            <NavLink key={s.id} to={`/sport/${s.slug}`} className={sportNavLink}>{s.icon} {s.name}</NavLink>
           ))}
-          <NavLink to="/live-casino" className={navLink}>🎰 Live Casino</NavLink>
-          <NavLink to="/sport/weather" className={navLink}>🌤️ Weather</NavLink>
+          <NavLink to="/live-casino" className={sportNavLink}>🎰 Live Casino</NavLink>
+          <NavLink to="/sport/weather" className={sportNavLink}>🌤️ Weather</NavLink>
         </div>
       </div>
 

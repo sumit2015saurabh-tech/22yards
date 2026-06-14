@@ -12,8 +12,11 @@
   --color-gold-500: #c9a55a;
   --color-back: #4a9ebf;
   --color-back-hover: #3d8aad;
-  --color-lay: #c9a86c;
-  --color-lay-hover: #b89555;
+  --color-lay: #6bc9a8;
+  --color-lay-hover: #55b894;
+  --color-lay-text: #0b1318;
+  --color-tab-active: #3d9a7a;
+  --color-tab-active-border: #5bb896;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
@@ -83,11 +86,29 @@ body {
 }
 .odds-lay {
   background-color: var(--color-lay);
-  color: #1a1510;
+  color: var(--color-lay-text);
 }
 .odds-lay:hover {
   background-color: var(--color-lay-hover);
 }
+
+.tab-active {
+  background: linear-gradient(135deg, var(--color-tab-active) 0%, #2d6b5a 100%);
+  color: #fff;
+  border: 1px solid var(--color-tab-active-border);
+  box-shadow: 0 2px 12px rgba(61, 154, 122, 0.25);
+}
+
+.tab-inactive {
+  @apply bg-pitch-800/50 text-white/55 hover:bg-pitch-700/50 hover:text-white/85 border border-transparent;
+}
+
+.hue-slot-0 { filter: hue-rotate(0deg) saturate(1.1); }
+.hue-slot-1 { filter: hue-rotate(40deg) saturate(1.15); }
+.hue-slot-2 { filter: hue-rotate(80deg) saturate(1.1); }
+.hue-slot-3 { filter: hue-rotate(160deg) saturate(1.2); }
+.hue-slot-4 { filter: hue-rotate(220deg) saturate(1.1); }
+.hue-slot-5 { filter: hue-rotate(280deg) saturate(1.15); }
 
 .sport-card {
   @apply rounded-xl overflow-hidden border border-white/[0.06] transition-all duration-300;

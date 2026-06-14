@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { CASINO_GAMES, CASINO_TABS, gamesForTab, type CasinoTab } from '@/data/casino';
-import { getCasinoThumbnail } from '@/data/casinoImages';
+import { CasinoGameImage } from '@/components/casino/CasinoGameImage';
 import { Search, Play } from 'lucide-react';
 
 export function LiveCasinoPage() {
@@ -44,10 +44,8 @@ export function LiveCasinoPage() {
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
-            className={`shrink-0 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
-              tab === t.id
-                ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-pitch-950 shadow-md'
-                : 'bg-pitch-800/60 text-white/60 hover:bg-pitch-700/60 hover:text-white'
+            className={`shrink-0 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 border ${
+              tab === t.id ? 'tab-active' : 'tab-inactive'
             }`}
           >
             {t.label}
@@ -61,8 +59,10 @@ export function LiveCasinoPage() {
             key={p}
             type="button"
             onClick={() => setProvider(p)}
-            className={`text-xs px-3 py-1.5 rounded-lg transition-all ${
-              provider === p ? 'bg-pitch-500/30 text-pitch-400 border border-pitch-500/40' : 'bg-white/[0.04] text-white/45 hover:bg-white/[0.08]'
+            className={`text-xs px-3 py-1.5 rounded-lg transition-all border ${
+              provider === p
+                ? 'tab-active text-xs'
+                : 'tab-inactive text-xs'
             }`}
           >
             {p}
@@ -97,7 +97,6 @@ function GameCard({
   onHover: () => void;
   onLeave: () => void;
 }) {
-  const img = getCasinoThumbnail(game);
   return (
     <Link
       to={game.slug === 'vimaan' ? '/vimaan' : '/live-casino'}
@@ -105,12 +104,10 @@ function GameCard({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      <div className="aspect-[4/3] relative overflow-hidden bg-pitch-900">
-        <img
-          src={img}
-          alt={game.name}
-          className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`}
-          loading="lazy"
+      <div className="aspect-[4/3] relative overflow-hidden bg-pitch-900 min-h-[120px]">
+        <CasinoGameImage
+          game={game}
+          className={`transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-pitch-950/90 via-pitch-950/20 to-transparent" />
         {game.popular && (
@@ -134,17 +131,17 @@ export function VimaanPage() {
   return (
     <div className="max-w-lg mx-auto px-4 py-8 text-center">
       <img
-        src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=400&fit=crop&q=80"
+        src={`${import.meta.env.BASE_URL}images/casino/crash.svg`}
         alt="Vimaan"
-        className="w-24 h-24 rounded-2xl mx-auto mb-4 object-cover shadow-lg ring-2 ring-gold-400/30"
+        className="w-24 h-24 rounded-2xl mx-auto mb-4 object-cover shadow-lg ring-2 ring-pitch-400/40"
       />
       <h1 className="text-3xl font-bold mb-2">VIMAAN</h1>
       <p className="text-white/50 text-sm mb-8">Crash game — cash out before the plane flies away</p>
       <div className="bg-pitch-800/60 rounded-2xl p-8 border border-white/[0.08] aspect-video flex items-center justify-center relative overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=600&h=400&fit=crop&q=80"
+          src={`${import.meta.env.BASE_URL}images/casino/crash.svg`}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
         <div className="relative text-center">
           <p className="text-5xl font-bold text-gold-400 animate-pulse">2.47x</p>

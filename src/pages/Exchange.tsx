@@ -2,11 +2,10 @@ import { Link } from 'react-router-dom';
 import { useLiveOdds } from '@/hooks/useLiveOdds';
 import { InPlayBadge } from '@/components/exchange/ExchangeUI';
 import { CASINO_GAMES, gamesForTab } from '@/data/casino';
-import { getCasinoThumbnail } from '@/data/casinoImages';
+import { HERO_IMAGE } from '@/data/casinoImages';
+import { CasinoGameImage } from '@/components/casino/CasinoGameImage';
 import { SPORTS } from '@/data/sports';
 import { ArrowRight, CloudSun } from 'lucide-react';
-
-const HERO = 'https://images.unsplash.com/photo-1531415077819-7b46a01288c0?w=1920&q=80&auto=format&fit=crop';
 
 export function HomePage() {
   const { fixtures, connected, latencyMs } = useLiveOdds();
@@ -14,9 +13,14 @@ export function HomePage() {
 
   return (
     <div>
-      <section className="relative h-72 md:h-96 overflow-hidden">
-        <img src={HERO} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-pitch-950 via-pitch-950/80 to-pitch-950/30" />
+      <section className="relative h-72 md:h-[420px] overflow-hidden">
+        <img
+          src={HERO_IMAGE}
+          alt="Cricket stadium"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-pitch-950/92 via-pitch-950/55 to-pitch-950/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-pitch-950/80 via-transparent to-transparent" />
         <div className="relative max-w-[1600px] mx-auto px-4 h-full flex items-center">
           <div className="max-w-xl">
             <p className="text-pitch-400 text-sm font-medium mb-2">Cricket · Casino · Weather · Politics</p>
@@ -48,7 +52,7 @@ export function HomePage() {
             <Link
               key={s.id}
               to={`/sport/${s.slug}`}
-              className="shrink-0 px-4 py-2 rounded-xl bg-pitch-800/50 border border-white/[0.06] text-sm hover:border-pitch-500/40 hover:bg-pitch-800 transition-all"
+              className="shrink-0 px-4 py-2 rounded-xl text-sm border transition-all duration-200 hover:border-pitch-500/30 hover:bg-pitch-800/60"
             >
               {s.icon} {s.name}
             </Link>
@@ -96,10 +100,10 @@ export function HomePage() {
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
           {popularGames.map((g) => (
-            <Link key={g.id} to="/live-casino" className="casino-card shrink-0 w-40 block">
-              <div className="h-24 overflow-hidden relative">
-                <img src={getCasinoThumbnail(g)} alt={g.name} className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-pitch-950/80 to-transparent" />
+            <Link key={g.id} to="/live-casino" className="casino-card shrink-0 w-44 block">
+              <div className="h-28 overflow-hidden relative min-h-[112px]">
+                <CasinoGameImage game={g} />
+                <div className="absolute inset-0 bg-gradient-to-t from-pitch-950/90 via-pitch-950/20 to-transparent pointer-events-none" />
               </div>
               <div className="p-2 bg-pitch-800/40">
                 <p className="text-xs font-semibold truncate">{g.name}</p>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4a1942"/><stop offset="100%" stop-color="#0b1318"/></linearGradient></defs>
+  <rect width="400" height="280" fill="url(#g)"/>
+  <rect x="100" y="50" width="200" height="130" rx="12" fill="#1a2832" stroke="#d4b86a" stroke-width="2"/>
+  <text x="150" y="110" font-size="36">7ã</text>
+  <text x="200" y="110" font-size="36"><R</text>
+  <text x="250" y="110" font-size="36">=Ž</text>
+  <text x="200" y="215" text-anchor="middle" fill="#d4b86a" font-size="16" font-weight="700" font-family="system-ui">SLOTS</text>
+</svg>
