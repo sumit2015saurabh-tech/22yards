@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-pitch-950: #0a1612;
-  --color-pitch-900: #0f2219;
-  --color-pitch-800: #163528;
-  --color-pitch-700: #1e4d38;
+  --color-pitch-950: #0a1218;
+  --color-pitch-900: #0f1a20;
+  --color-pitch-800: #1a2832;
+  --color-pitch-700: #243a48;
   --color-pitch-600: #2d6b4a;
   --color-pitch-500: #3d8f5f;
   --color-pitch-400: #4da870;
@@ -12,6 +12,14 @@
   --color-gold-500: #c9a227;
   --font-sans: "Inter", system-ui, sans-serif;
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
 @font-face {
   font-family: "Inter";

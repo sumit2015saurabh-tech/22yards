@@ -11,9 +11,11 @@ export function DemoBanner() {
           <Sparkles className="w-4 h-4" /> Live interactive demo
         </span>
         <span className="text-white/70">
-          Player: <strong className="text-white">demo</strong> / <strong className="text-white">demo123</strong>
+          Player <strong className="text-white">demo</strong>/<strong className="text-white">demo123</strong>
           <span className="mx-2 text-white/30">|</span>
-          Admin: <strong className="text-white">admin</strong> / <strong className="text-white">admin123</strong>
+          Admin <strong className="text-white">admin</strong>/<strong className="text-white">admin123</strong>
+          <span className="mx-2 text-white/30">|</span>
+          184 casino games · WebSocket odds
         </span>
         <span className="text-white/40 text-xs">Data saved in your browser only · No real money</span>
       </div>
