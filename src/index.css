@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pitch-950: #0a1612;
+  --color-pitch-900: #0f2219;
+  --color-pitch-800: #163528;
+  --color-pitch-700: #1e4d38;
+  --color-pitch-600: #2d6b4a;
+  --color-pitch-500: #3d8f5f;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #c9a227;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduNmMwfVZtjiA.woff2") format("woff2");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-pitch-950 text-white antialiased;
+  font-family: var(--font-sans);
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #d4af37 0%, #f5e6a3 50%, #c9a227 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200;
+  @apply bg-gradient-to-r from-pitch-600 to-pitch-500 hover:from-pitch-500 hover:to-pitch-400;
+  @apply shadow-lg shadow-pitch-600/30 hover:shadow-pitch-500/40 hover:-translate-y-0.5;
+}
+
+.btn-gold {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200;
+  @apply bg-gradient-to-r from-gold-500 to-gold-400 text-pitch-950;
+  @apply hover:brightness-110 hover:-translate-y-0.5;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:border-pitch-500/50 hover:shadow-xl hover:shadow-pitch-600/10 hover:-translate-y-1;
+}
