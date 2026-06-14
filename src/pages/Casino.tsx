@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { api, type CasinoGame } from '@/lib/api';
+import { DEMO_CASINO, DEMO_PROMOTIONS } from '@/lib/demo';
 import { Gamepad2 } from 'lucide-react';
 
 export function CasinoPage() {
   const [games, setGames] = useState<CasinoGame[]>([]);
 
   useEffect(() => {
-    api.casinoGames().then(setGames).catch(() => {});
+    api.casinoGames().then(setGames).catch(() => setGames(DEMO_CASINO));
   }, []);
 
   return (
@@ -35,7 +36,7 @@ export function PromotionsPage() {
   const [code, setCode] = useState('');
   const [msg, setMsg] = useState('');
 
-  useEffect(() => { api.promotions().then(setPromos).catch(() => {}); }, []);
+  useEffect(() => { api.promotions().then(setPromos).catch(() => setPromos(DEMO_PROMOTIONS)); }, []);
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8 space-y-8">

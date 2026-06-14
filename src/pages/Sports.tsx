@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { api, type Fixture, type Market } from '@/lib/api';
+import { DEMO_FIXTURES } from '@/lib/demo';
+import { demoMarkets } from '@/lib/demoMarkets';
 import { useBetSlip } from '@/context/BetSlipContext';
 import { useAuth } from '@/context/AuthContext';
 import { BetSlipPanel } from '@/components/BetSlipPanel';
@@ -20,12 +22,16 @@ export function SportsPage() {
       setFixtures(r.items);
       const fid = params.get('fixture') ?? r.items[0]?.id;
       if (fid) setSelected(fid);
+    }).catch(() => {
+      setFixtures(DEMO_FIXTURES);
+      const fid = params.get('fixture') ?? DEMO_FIXTURES[0]?.id;
+      if (fid) setSelected(fid);
     }).finally(() => setLoading(false));
   }, [params]);
 
   useEffect(() => {
     if (!selected) return;
-    api.markets(selected).then((r) => setMarkets(r.items)).catch(() => setMarkets([]));
+    api.markets(selected).then((r) => setMarkets(r.items)).catch(() => setMarkets(demoMarkets(selected)));
   }, [selected]);
 
   const fixture = fixtures.find((f) => f.id === selected);

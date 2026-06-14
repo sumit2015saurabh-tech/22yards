@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Trophy, Sparkles, TrendingUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { api, type Fixture, type Promotion } from '@/lib/api';
+import { DEMO_FIXTURES, DEMO_PROMOTIONS } from '@/lib/demo';
 
 const HERO_IMG = 'https://images.unsplash.com/photo-1531415077819-7b46a01288c0?w=1920&q=80&auto=format&fit=crop';
 
@@ -10,8 +11,8 @@ export function HomePage() {
   const [promos, setPromos] = useState<Promotion[]>([]);
 
   useEffect(() => {
-    api.fixtures('cricket').then((r) => setFixtures(r.items.slice(0, 3))).catch(() => {});
-    api.promotions().then(setPromos).catch(() => {});
+    api.fixtures('cricket').then((r) => setFixtures(r.items.slice(0, 3))).catch(() => setFixtures(DEMO_FIXTURES));
+    api.promotions().then(setPromos).catch(() => setPromos(DEMO_PROMOTIONS));
   }, []);
 
   return (
