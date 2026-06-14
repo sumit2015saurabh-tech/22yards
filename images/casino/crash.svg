@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a3a5c"/><stop offset="100%" stop-color="#0b1318"/></linearGradient></defs>
+  <rect width="400" height="280" fill="url(#g)"/>
+  <text x="200" y="100" text-anchor="middle" font-size="64"></text>
+  <text x="200" y="155" text-anchor="middle" fill="#3d9a7a" font-size="28" font-weight="700" font-family="system-ui">2.47x</text>
+  <text x="200" y="200" text-anchor="middle" fill="#d4b86a" font-size="16" font-weight="700" font-family="system-ui">VIMAAN CRASH</text>
+</svg>

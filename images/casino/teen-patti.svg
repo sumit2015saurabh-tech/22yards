@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e4d38"/><stop offset="100%" stop-color="#0b1318"/></linearGradient></defs>
+  <rect width="400" height="280" fill="url(#g)"/>
+  <text x="200" y="100" text-anchor="middle" font-size="64"><Ï</text>
+  <text x="200" y="160" text-anchor="middle" fill="#d4b86a" font-size="18" font-weight="700" font-family="system-ui">TEEN PATTI</text>
+  <text x="200" y="185" text-anchor="middle" fill="#fff" opacity="0.5" font-size="12" font-family="system-ui">Live Dealer</text>
+</svg>
