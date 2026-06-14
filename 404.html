@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>22yards</title>
+    <script>
+      (function () {
+        var base = '/22yards/';
+        var path = location.pathname.replace(base, '') + location.search + location.hash;
+        sessionStorage.setItem('22yards_redirect', path || '/');
+        location.replace(base);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
