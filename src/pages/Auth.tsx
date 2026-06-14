@@ -26,6 +26,13 @@ export function LoginPage() {
         <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="w-full px-4 py-3 rounded-xl bg-pitch-800 border border-white/10" required />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-xl bg-pitch-800 border border-white/10" required />
         {err && <p className="text-red-400 text-sm">{err}</p>}
+        {import.meta.env.VITE_DEMO_MODE === 'true' && (
+          <div className="rounded-xl bg-gold-400/10 border border-gold-400/20 p-3 text-xs text-white/70 space-y-1">
+            <p><strong className="text-gold-400">Demo accounts:</strong></p>
+            <p>Player — username <code className="text-white">demo</code>, password <code className="text-white">demo123</code> (5,000 pts)</p>
+            <p>Admin — username <code className="text-white">admin</code>, password <code className="text-white">admin123</code></p>
+          </div>
+        )}
         <button type="submit" className="btn-primary w-full">Sign in</button>
         <p className="text-center text-sm text-white/50">
           New here? <Link to="/register" className="text-gold-400">Create account</Link>

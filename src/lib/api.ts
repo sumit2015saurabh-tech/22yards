@@ -1,4 +1,7 @@
+import { mockApi } from './mockApi';
+
 const API = import.meta.env.VITE_API_URL ?? '/api';
+const DEMO = import.meta.env.VITE_DEMO_MODE === 'true';
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) {
@@ -23,7 +26,7 @@ async function request<T>(
   return data as T;
 }
 
-export const api = {
+const liveApi = {
   register: (body: object) => request('/auth/register', { method: 'POST', body: JSON.stringify(body) }),
   login: (body: object) =>
     request<{ accessToken: string; refreshToken: string; user: User }>('/auth/login', {
@@ -72,6 +75,9 @@ export const api = {
     }, token),
   adminNotifications: (token: string) => request<{ items: Notification[] }>('/wallet/admin/notifications?unreadOnly=true', {}, token),
 };
+
+export const isDemoMode = DEMO;
+export const api = DEMO ? mockApi : liveApi;
 
 export interface User {
   id: string;

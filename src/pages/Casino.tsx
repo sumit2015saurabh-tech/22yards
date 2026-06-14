@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api, type CasinoGame } from '@/lib/api';
 import { DEMO_CASINO, DEMO_PROMOTIONS } from '@/lib/demo';
+import { useAuth } from '@/context/AuthContext';
 import { Gamepad2 } from 'lucide-react';
 
 export function CasinoPage() {
@@ -32,18 +33,31 @@ export function CasinoPage() {
 }
 
 export function PromotionsPage() {
+  const { token } = useAuth();
   const [promos, setPromos] = useState<Awaited<ReturnType<typeof api.promotions>>>([]);
   const [code, setCode] = useState('');
   const [msg, setMsg] = useState('');
 
   useEffect(() => { api.promotions().then(setPromos).catch(() => setPromos(DEMO_PROMOTIONS)); }, []);
 
+  const redeem = async () => {
+    if (!token) { setMsg('Sign in to redeem codes'); return; }
+    if (!code.trim()) return;
+    try {
+      const res = await api.redeemPromo(token, code.trim()) as { bonusAmount?: number };
+      setMsg(`Redeemed! +${res.bonusAmount ?? 0} bonus points added to your wallet.`);
+      setCode('');
+    } catch (e: unknown) {
+      setMsg(e instanceof Error ? e.message : 'Invalid code');
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-8 space-y-8">
       <h1 className="text-3xl font-bold">Promotions</h1>
       <div className="glass rounded-2xl p-6 flex gap-3">
         <input placeholder="Enter promo code" value={code} onChange={(e) => setCode(e.target.value)} className="flex-1 px-4 py-3 rounded-xl bg-pitch-800 border border-white/10" />
-        <button type="button" className="btn-gold" onClick={() => setMsg('Sign in to redeem codes')}>Redeem</button>
+        <button type="button" className="btn-gold" onClick={redeem}>Redeem</button>
       </div>
       {msg && <p className="text-sm text-white/60">{msg}</p>}
       <div className="space-y-4">

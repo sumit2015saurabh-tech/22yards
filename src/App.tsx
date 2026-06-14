@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '@/context/AuthContext';
 import { BetSlipProvider } from '@/context/BetSlipContext';
 import { Layout } from '@/components/Layout';
+import { DemoBanner } from '@/components/DemoBanner';
 import { AgeGate, CookieBanner } from '@/components/Compliance';
 import { HomePage } from '@/pages/Home';
 import { SportsPage } from '@/pages/Sports';
@@ -11,13 +12,28 @@ import { AdminPage } from '@/pages/Admin';
 import { TermsPage, PrivacyPage, ResponsiblePlayPage } from '@/pages/Legal';
 import { CasinoPage, PromotionsPage } from '@/pages/Casino';
 import { ProfilePage, SupportPage } from '@/pages/Profile';
+import { useEffect } from 'react';
+
+function RedirectFrom404() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const path = sessionStorage.getItem('22yards_redirect');
+    if (path) {
+      sessionStorage.removeItem('22yards_redirect');
+      navigate(path, { replace: true });
+    }
+  }, [navigate]);
+  return null;
+}
 
 export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
       <AuthProvider>
         <BetSlipProvider>
+          <RedirectFrom404 />
           <AgeGate>
+            <DemoBanner />
             <Layout>
               <Routes>
                 <Route path="/" element={<HomePage />} />

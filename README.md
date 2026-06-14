@@ -1,17 +1,26 @@
-# 22yards — Cricket Entertainment Frontend
+# 22yards — Cricket Entertainment Platform
 
-React + Vite + Tailwind frontend for the **22yards** cricket entertainment platform.
+**Live demo:** https://sumit2015saurabh-tech.github.io/22yards/
 
-Connects to the microservices API gateway at `localhost:8080` when running locally. On GitHub Pages, demo cricket fixtures and promotions load automatically when the backend is offline.
+Interactive React demo hosted on GitHub Pages. No backend server required — all demo data runs in the browser.
 
-## Dev
+## Demo login
+
+| Role | Username | Password |
+|------|----------|----------|
+| Player | `demo` | `demo123` |
+| Admin | `admin` | `admin123` |
+
+Try sports betting, wallet, promotions, casino, and the admin dashboard.
+
+## Local development (with real backend)
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). API calls proxy to `http://localhost:8080/api`.
+Connects to API gateway at `http://localhost:8080` when running without `VITE_DEMO_MODE`.
 
 ## Deploy to GitHub Pages
 
@@ -19,21 +28,21 @@ Open [http://localhost:5173](http://localhost:5173). API calls proxy to `http://
 npm run deploy
 ```
 
-Live site: **https://sumit2015saurabh-tech.github.io/22yards/**
+## Backend source code
 
-## Compliance features
+Microservices backend lives in a separate repo: [wickets-platform](https://github.com/sumit2015saurabh-tech/wickets-platform)
 
-- 18+ age verification gate
-- Cookie consent banner
-- Terms of Service, Privacy Policy, Responsible Play pages
-- Self-exclusion tools in profile
-- Clear disclaimers that points are virtual credits — not real money
-- No payment gateway in the UI
+Run locally with Docker when you need the full stack:
+
+```bash
+docker compose up -d --build
+node scripts/seed-all.js
+```
 
 ## Stack
 
-- React 19 + TypeScript
-- Vite 6
-- Tailwind CSS 4
-- React Router 7
-- Lucide icons
+React 19 · Vite 6 · Tailwind CSS 4 · TypeScript
+
+## Compliance
+
+18+ age gate · Cookie consent · Terms · Privacy · Responsible Play · Virtual points only
