@@ -66,7 +66,7 @@ export function Header() {
             ) : (
               <>
                 <Link to="/login" className="text-xs text-white/70 px-3">Login</Link>
-                <Link to="/register" className="text-xs bg-gradient-to-r from-[#fd8f3b] to-[#fd3523] px-4 py-1.5 rounded font-bold">Join</Link>
+                <Link to="/register" className="text-xs bg-gradient-to-r from-gold-500 to-gold-400 text-pitch-950 px-4 py-1.5 rounded-lg font-bold shadow-sm hover:brightness-110 transition-all">Join</Link>
               </>
             )}
             <button type="button" className="lg:hidden p-1.5" onClick={() => setMenuOpen(!menuOpen)}>
@@ -76,7 +76,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-[#fd8f3b] to-[#fd3523]">
+      <div className="bg-gradient-to-r from-pitch-700 via-pitch-600 to-pitch-500 shadow-sm">
         <div className="max-w-[1600px] mx-auto px-3 py-1.5 flex gap-2 overflow-x-auto scrollbar-hide">
           <NavLink to="/inplay" className={navLink}>In-Play</NavLink>
           <NavLink to="/multimarket" className={navLink}>Multi Markets</NavLink>
@@ -84,7 +84,7 @@ export function Header() {
             <NavLink key={s.id} to={`/sport/${s.slug}`} className={navLink}>{s.icon} {s.name}</NavLink>
           ))}
           <NavLink to="/live-casino" className={navLink}>🎰 Live Casino</NavLink>
-          <NavLink to="/vimaan" className={navLink}>✈️ Vimaan</NavLink>
+          <NavLink to="/sport/weather" className={navLink}>🌤️ Weather</NavLink>
         </div>
       </div>
 

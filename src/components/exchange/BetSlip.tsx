@@ -33,17 +33,17 @@ export function ExchangeBetSlip() {
   };
 
   return (
-    <div className="bg-[#1a2832] border border-white/10 rounded-lg overflow-hidden sticky top-20">
-      <div className="flex border-b border-white/10">
+    <div className="bg-pitch-800/60 border border-white/[0.08] rounded-xl overflow-hidden sticky top-20 shadow-lg shadow-black/20">
+      <div className="flex border-b border-white/[0.06]">
         {(['back', 'lay'] as const).map((s) => (
           <button
             key={s}
             type="button"
             onClick={() => setSide(s)}
-            className={`flex-1 py-2.5 text-sm font-bold uppercase ${
+            className={`flex-1 py-2.5 text-sm font-bold uppercase transition-all duration-200 ${
               side === s
-                ? s === 'back' ? 'bg-[#1a8ee1] text-white' : 'bg-[#f4496d] text-white'
-                : 'text-white/50 hover:bg-white/5'
+                ? s === 'back' ? 'odds-back text-white' : 'odds-lay'
+                : 'text-white/40 hover:bg-white/[0.04] hover:text-white/70'
             }`}
           >
             {s}
@@ -63,7 +63,7 @@ export function ExchangeBetSlip() {
               </button>
             </div>
             <p className="text-xs text-white/50 mt-1">{i.fixtureLabel} · {i.marketName}</p>
-            <p className={`text-sm font-bold mt-1 ${side === 'back' ? 'text-[#1a8ee1]' : 'text-[#f4496d]'}`}>
+            <p className={`text-sm font-bold mt-1 ${side === 'back' ? 'text-[var(--color-back)]' : 'text-[var(--color-lay)]'}`}>
               {i.odds.toFixed(2)}
             </p>
           </div>
@@ -98,8 +98,8 @@ export function ExchangeBetSlip() {
           type="button"
           disabled={!items.length || loading}
           onClick={place}
-          className={`w-full py-3 rounded font-bold text-sm disabled:opacity-40 ${
-            side === 'back' ? 'bg-[#1a8ee1] hover:bg-[#1578c4]' : 'bg-[#f4496d] hover:bg-[#e03a5d]'
+          className={`w-full py-3 rounded-lg font-bold text-sm disabled:opacity-40 transition-all duration-200 active:scale-[0.98] ${
+            side === 'back' ? 'odds-back text-white hover:brightness-110' : 'odds-lay hover:brightness-105'
           }`}
         >
           {loading ? 'Placing…' : `Place ${side} bet`}

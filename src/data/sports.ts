@@ -16,19 +16,21 @@ export const SPORTS: Sport[] = [
   { id: '66104', name: 'Lottery', slug: 'lottery', icon: '🎱' },
   { id: '2378961', name: 'Politics', slug: 'politics', icon: '🗳️' },
   { id: '66101', name: 'Virtual Sports', slug: 'virtual-sports', icon: '🎮' },
+  { id: '88001', name: 'Weather', slug: 'weather', icon: '🌤️', popular: true },
 ];
 
 export const EXCHANGE_MODES = [
   { id: 'inplay', label: 'In-Play', path: '/inplay' },
   { id: 'exchange', label: 'Exchange', path: '/exchange' },
   { id: 'livecasino', label: 'Live Casino', path: '/live-casino' },
+  { id: 'weather', label: 'Weather', path: '/sport/weather' },
   { id: 'tips', label: 'Tips & Previews', path: '/tips' },
 ];
 
 export const NEWS_TICKER = [
   'IPL 2026 season markets now open on 22yards',
+  'Weather markets live — Mumbai rainfall, Delhi temperature & more',
   'Live casino tables running 24/7 — Teen Patti, Dragon Tiger, Roulette & more',
-  'New player? Use promo WELCOME22 after admin verification',
+  'Politics: Lok Sabha 2029 outright winner trading now',
   'Play responsibly — set limits in your profile',
-  'Cricket World Cup outright winner markets updated live',
 ];
